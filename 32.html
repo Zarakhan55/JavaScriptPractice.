@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="32.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Image filters</h1>
+
+    <section class="menu">
+        <ul class="tabs">
+            <li class="image" data-category="All">All</li>
+            <li class="image" data-category="Birds">Birds</li>
+            <li class="image" data-category="Animals">Animals</li>
+            <li class="image" data-category="Nature">Nature</li>
+        </ul>
+    </section>
+
+    <section class="img">
+        <!-- Birds -->
+        <div class="images" data-category="Birds">
+            <img src="https://images.unsplash.com/photo-1497206365907-f5e630693df0" alt="Bird">
+                        <img src="https://images.unsplash.com/photo-1497206365907-f5e630693df0" alt="Bird">
+
+        </div>
+
+        <!-- Animals -->
+        <div class="images" data-category="Animals">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d" alt="Animal">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a" alt="Animal">
+        </div>
+
+        <!-- Nature -->
+        <div class="images" data-category="Nature">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Nature">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Nature">
+        </div>
+    </section>
+    <script>
+    const tabs = document.querySelector('.tabs');
+    const gallery = document.querySelectorAll('.images');
+
+    tabs.addEventListener('click', (event) => {
+        const category = event.target.dataset.category;
+        if (!category) return;
+
+        filterSearch(category);
+    });
+
+    const filterSearch = (value) => {
+        gallery.forEach((item) => {
+            if (value === "All" || item.dataset.category === value) {
+                item.style.display = "flex";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    };
+</script>
+</body>
+
+</html>

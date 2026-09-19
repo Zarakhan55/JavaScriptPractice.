@@ -1,83 +1,32 @@
-// let day = Number(prompt("enter number 1---7"));
+// let text = "Apple, Banana, Kiwi";
+// let part = text.slice(7, 13);
+// console.log(part);
 
-// switch (day) {
-//     case 1:
-//         console.log("Monday");
-//         break;
+// let name="Zara Nasir khan";
+// let fN=name.slice(4,15);
+// console.log(fN);
 
-//     case 2:
-//         let no=prompt("enter day");
-//         console.log(no);
-//         break;
+// let Name="Zara";
+// let Father="Nasir Khan";
+// result=Name.concat(" ",Father);
+// console.log(result);
 
-//     case 3:
-//         console.log("Wednesday");
-//         break;
-//     case 4:
-//         console.log("Thursday");
-//         break;
-//     case 5:
-//         console.log("friday");
-//         break;
-//     case 6:
-//         console.log("Saturday");
-//         break;
-//     case 7:
-//         console.log("Sunday");
-//         break;
-//     default:
-//         console.log("Try again.................................");
-// }
-
-let price = 2500;
-let quantity = 3;
-let member = true;
-let coupon = "SAVE10";
-let city = "Karachi";
-let subtotal=price*quantity;
-console.log("total :"+subtotal);
-let discount = 0;
-
-if (member) {
-  discount = subtotal * 0.10;
-}
-
-console.log(discount);
-
-let couponDiscount = 0;
-
-switch (coupon) {
-  case "SAVE10":
-    couponDiscount = subtotal * 0.10;
-    break;
-
-  case "SAVE20":
-    couponDiscount = subtotal * 0.20;
-    break;
-
-  case "WELCOME":
-    couponDiscount = 500;
-    break;
-
-  default:
-    couponDiscount = 0;
-}
+// let name = prompt("Enter your name");
+// let Upr = name.charAt(0).toUpperCase();
+// let result=name.substring(2);
+// alert(Upr.concat(result));
+// let s="Helloo";
+// console.log(s.replace('o','z'));
 
 
+// const str = "apple apple apple";
+// const result = str.replaceAll("apple", "orange");
 
-// let role = "student";
+// console.log(result);
 
-// switch (role) {
-//   case "admin":
-//     console.log("admin-portal");
-//     break;
-//   case "student":
-//     console.log("student-portal");
-//     break;
-//   case "trader":
-//    console.log("trader-portal");
-//     break;
+const str = "Apple APPLE apple ApPlE";
+const result = str.replace(/apple/gi, "orange");
 
-//   default:
-//     console.log("Invalid role");
-// }
+console.log(result);
+
+

@@ -1,32 +1,69 @@
-// let text = "Apple, Banana, Kiwi";
-// let part = text.slice(7, 13);
-// console.log(part);
+// Question 1 — Electricity Bill
 
-// let name="Zara Nasir khan";
-// let fN=name.slice(4,15);
-// console.log(fN);
+function calculateBill(units) {
+    let bill = 0;
 
-// let Name="Zara";
-// let Father="Nasir Khan";
-// result=Name.concat(" ",Father);
-// console.log(result);
+    if (units <= 100) {
+        bill = units * 10;
+    } 
+    else if (units <= 200) {
+        bill = (100 * 10) + ((units - 100) * 15);
+    } 
+    else {
+        bill = (100 * 10) + (100 * 15) + ((units - 200) * 20);
+    }
 
-// let name = prompt("Enter your name");
-// let Upr = name.charAt(0).toUpperCase();
-// let result=name.substring(2);
-// alert(Upr.concat(result));
-// let s="Helloo";
-// console.log(s.replace('o','z'));
+    return bill;
+}
 
-
-// const str = "apple apple apple";
-// const result = str.replaceAll("apple", "orange");
-
-// console.log(result);
-
-const str = "Apple APPLE apple ApPlE";
-const result = str.replace(/apple/gi, "orange");
-
-console.log(result);
+console.log(calculateBill(200)); 
 
 
+// Question 2 — Grade Calculator
+
+function getGrade(marks) {
+    if (marks >= 85) {
+        return "A";
+    }
+    else if (marks >= 75) {
+        return "B";
+    }
+    else if (marks >= 65) {
+        return "C";
+    }
+    else if (marks >= 50) {
+        return "D";
+    }
+    else {
+        return "F";
+    }
+}
+
+console.log(getGrade(82)); // B
+
+
+// Question 3 — Password Checker
+
+function checkPassword(password) {
+    if (password.length >= 8) {
+        return "Strong Password";
+    } 
+    else {
+        return "Weak Password";
+    }
+}
+
+console.log(checkPassword("password123")); 
+console.log(checkPassword("hello"));      
+
+
+// Question 4 — Discount Calculator
+
+function calculateDiscount(price, discountPercent) {
+    const discountAmount = price * (discountPercent / 100);
+    const finalPrice = price - discountAmount;
+
+    return finalPrice;
+}
+
+console.log(calculateDiscount(1000, 70));

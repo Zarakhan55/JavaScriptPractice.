@@ -1,0 +1,152 @@
+Question
+You are creating a game where a spaceship must complete a mission.
+
+Ask the player for:
+
+Fuel percentage
+
+Distance to the planet in million km
+
+Number of asteroids
+
+Oxygen percentage
+
+Engine condition: "good", "normal", or "bad"
+
+Shield level: "high", "medium", or "low"
+
+Create an arrow function called calculateMission().
+
+The function should calculate a risk score:
+
+Distance > 80 → +30 risk
+
+Distance > 40 → +15 risk
+
+Otherwise → +5 risk
+
+Each asteroid → +8 risk
+
+Fuel below 30 → +25 risk
+
+Oxygen below 40 → +20 risk
+
+Bad engine → +25 risk
+
+Normal engine → +10 risk
+
+High shield → -20 risk
+
+Medium shield → -10 risk
+
+Finally:
+
+Risk ≤ 20 → "Mission Safe 🚀"
+
+Risk ≤ 50 → "Mission Risky ⚠️"
+
+Risk > 50 → "Mission Dangerous ☠️"
+
+The function must return the final result.
+
+
+
+
+const calculateMission = (
+  fuel,
+  distance,
+  asteroids,
+  oxygen,
+  engine,
+  shield
+) => {
+
+  let risk = 0;
+
+  // Distance
+  if (distance > 80) {
+    risk += 30;
+  } else if (distance > 40) {
+    risk += 15;
+  } else {
+    risk += 5;
+  }
+
+  // Asteroids
+  risk += asteroids * 8;
+
+  // Fuel
+  if (fuel < 30) {
+    risk += 25;
+  }
+
+  // Oxygen
+  if (oxygen < 40) {
+    risk += 20;
+  }
+
+  // Engine
+  if (engine === "bad") {
+    risk += 25;
+  } else if (engine === "normal") {
+    risk += 10;
+  }
+
+  // Shield
+  if (shield === "high") {
+    risk -= 20;
+  } else if (shield === "medium") {
+    risk -= 10;
+  }
+
+  // Final result
+  if (risk <= 20) {
+    return "Mission Safe 🚀";
+  } else if (risk <= 50) {
+    return "Mission Risky ⚠️";
+  } else {
+    return "Mission Dangerous ☠️";
+  }
+};
+
+
+// Get information from user
+
+let fuel = Number(prompt("Enter fuel percentage:"));
+
+let distance = Number(
+  prompt("Enter distance in million km:")
+);
+
+let asteroids = Number(
+  prompt("Enter number of asteroids:")
+);
+
+let oxygen = Number(
+  prompt("Enter oxygen percentage:")
+);
+
+let engine = prompt(
+  "Engine condition: good / normal / bad"
+);
+
+let shield = prompt(
+  "Shield: high / medium / low"
+);
+
+
+// Call function
+
+let result = calculateMission(
+  fuel,
+  distance,
+  asteroids,
+  oxygen,
+  engine,
+  shield
+);
+
+
+// Show result
+
+console.log(result);

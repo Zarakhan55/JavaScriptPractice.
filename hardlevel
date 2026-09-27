@@ -1,0 +1,267 @@
+Question
+Create a Smart Delivery Decision System for a delivery company.
+
+The program should ask the user for:
+
+Package weight
+
+Distance in km
+
+Package value
+
+Weather: normal, rain, storm
+
+Road condition: good, bad
+
+Delivery type: normal, express
+
+Number of previous failed attempts
+
+Customer priority: normal, vip
+
+The program must calculate:
+
+Delivery cost
+
+Risk score
+
+Delivery priority
+
+Final delivery decision
+
+Rules
+Base cost
+
+Base = 200
+
+Every km = 20
+
+Every kg above 5 kg = 100
+
+Delivery type
+
+Express → add 500
+
+Weather
+
+Rain → risk +20
+
+Storm → risk +40
+
+Road
+
+Bad → risk +25
+
+Package value
+
+Value > 100000 → risk +30
+
+Failed attempts
+
+Each failed attempt → risk +10
+
+Customer
+
+VIP → risk -15
+
+Distance
+
+Above 100 km → risk +20
+
+Final decision
+If risk is:
+
+0–30 → "Safe Delivery"
+
+31–60 → "Careful Delivery"
+
+61+ → "High Risk Delivery"
+
+But there is one special rule:
+
+If the customer is VIP and the package value is greater than 100000, the delivery gets "VIP Priority".
+
+
+
+
+
+
+
+// ======================================
+// SMART DELIVERY DECISION SYSTEM
+// ======================================
+
+
+// Main function
+const calculateDelivery = (
+  weight,
+  distance,
+  value,
+  weather,
+  road,
+  deliveryType,
+  failedAttempts,
+  customer
+) => {
+
+  // -----------------------------
+  // 1. Calculate delivery cost
+  // -----------------------------
+
+  let cost = 200;
+
+  // Distance cost
+  cost += distance * 20;
+
+  // Extra weight cost
+  if (weight > 5) {
+    cost += (weight - 5) * 100;
+  }
+
+  // Express delivery
+  if (deliveryType === "express") {
+    cost += 500;
+  }
+
+
+  // -----------------------------
+  // 2. Calculate risk
+  // -----------------------------
+
+  let risk = 0;
+
+  // Weather
+  if (weather === "rain") {
+    risk += 20;
+  } else if (weather === "storm") {
+    risk += 40;
+  }
+
+  // Road
+  if (road === "bad") {
+    risk += 25;
+  }
+
+  // Package value
+  if (value > 100000) {
+    risk += 30;
+  }
+
+  // Failed attempts
+  risk += failedAttempts * 10;
+
+  // VIP customer reduces risk
+  if (customer === "vip") {
+    risk -= 15;
+  }
+
+  // Long distance
+  if (distance > 100) {
+    risk += 20;
+  }
+
+
+  // -----------------------------
+  // 3. Decide delivery status
+  // -----------------------------
+
+  let status;
+
+  if (risk <= 30) {
+    status = "Safe Delivery";
+  } else if (risk <= 60) {
+    status = "Careful Delivery";
+  } else {
+    status = "High Risk Delivery";
+  }
+
+
+  // -----------------------------
+  // 4. VIP special rule
+  // -----------------------------
+
+  if (customer === "vip" && value > 100000) {
+    status = "VIP Priority";
+  }
+
+
+  // -----------------------------
+  // 5. Return everything
+  // -----------------------------
+
+  return {
+    cost: cost,
+    risk: risk,
+    status: status
+  };
+};
+
+
+// ======================================
+// GET USER INPUT
+// ======================================
+
+let weight = Number(
+  prompt("Enter package weight (kg):")
+);
+
+let distance = Number(
+  prompt("Enter delivery distance (km):")
+);
+
+let value = Number(
+  prompt("Enter package value:")
+);
+
+let weather = prompt(
+  "Weather: normal / rain / storm"
+);
+
+let road = prompt(
+  "Road: good / bad"
+);
+
+let deliveryType = prompt(
+  "Delivery: normal / express"
+);
+
+let failedAttempts = Number(
+  prompt("Previous failed attempts:")
+);
+
+let customer = prompt(
+  "Customer: normal / vip"
+);
+
+
+// ======================================
+// CALL FUNCTION
+// ======================================
+
+let result = calculateDelivery(
+  weight,
+  distance,
+  value,
+  weather,
+  road,
+  deliveryType,
+  failedAttempts,
+  customer
+);
+
+
+// ======================================
+// DISPLAY RESULT
+// ======================================
+
+console.log("========== DELIVERY RESULT ==========");
+
+console.log("Delivery Cost:", result.cost);
+
+console.log("Risk Score:", result.risk);
+
+console.log("Status:", result.status);
+
+console.log("=====================================");
+
+

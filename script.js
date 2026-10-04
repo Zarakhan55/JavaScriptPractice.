@@ -1,30 +1,25 @@
-// let url = "photo.png";
+// let user = +prompt("Enter any number");
 
-// if (url.endsWith(".png") || url.endsWith(".webp")) {
-//     console.log("Photo uploaded");
-// } else {
-//     console.log("not secure");
-// }
-// let text = "Hello world, welcome to the universe.";
-// console.log(text.includes("world"));
+// let timer = setInterval(function () {
+
+//     user--;
+
+//     console.log(user);
+
+//     if (user === 0) {
+//         clearInterval(timer);
+//         console.log("Time's Up!");
+//     }
+
+// }, 1000);
 
 
-function greet(name) {
-  console.log(`Hello ${name} Wellcome in our world`);
-}
+let totalSeconds=100;
+let timer = setInterval(function () {
 
-greet("John");
-greet("Ali");
-greet("Sara");
+totalSeconds--;
+let minutes = Math.floor(totalSeconds / 60);
+let seconds = totalSeconds % 60;
 
-function greeting(){
-    console.log("Hellooo coders...........");
-}
-greeting();
-
-function per(Total, Obtain) {
-    let result = (Obtain / Total) * 100;
-    console.log(`percentage ${result} %`);
-}
-
-per(100, 90);
+console.log(`${minutes}:${seconds}`);
+}, 1000);

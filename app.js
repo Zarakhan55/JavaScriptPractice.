@@ -1,18 +1,14 @@
-const fruits = ["apple", "banana", "mango"];
+let text = document.getElementById("demo");
+let tex = document.getElementById("dem");
+let te = document.getElementById("de");
+let t = document.getElementById("d");
 
-if (fruits.includes("banana")) {
-    console.log("Yes");
-} else {
-    console.log("No");
+function chng() {
+    text.textContent = "Hello JavaScript!";
+    tex.textContent = "Learning JavaScript";
+    te.textContent = "Welcome!";
+    t.textContent = "My Friends!";
 }
-console.log(fruits.join("_"));
-
-const fruits1 = ["apple", "banana"];
-const fruits2 = ["mango", "orange"];
-
-const result = fruits1.concat(fruits2);
-console.log(Array.isArray(fruits1));
-
-console.log(fruits2);
-console.log(result);
-
+let fun = function chn() {
+    t.innerHTML = t.innerHTML.toUpperCase();
+};

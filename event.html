@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Event Listeners</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 25px;
+            background: #f2f4f8;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f7f7f7;
+            border-radius: 8px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 6px 0;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        #hoverBox {
+            padding: 20px;
+            background: lightblue;
+            text-align: center;
+        }
+
+        #focusInput:focus {
+            outline: 2px solid green;
+        }
+
+        #result {
+            color: darkblue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Event Listener Practice</h1>
+    <p id="result">Events ka result yahan show hoga.</p>
+
+    <!-- 1. Click -->
+    <section>
+        <h3>1. Click</h3>
+        <button id="clickBtn">Click Me</button>
+    </section>
+
+    <!-- 2. Double Click -->
+    <section>
+        <h3>2. Double Click</h3>
+        <button id="doubleBtn">Double Click Me</button>
+    </section>
+
+    <!-- 3 & 4. Mouseover and Mouseout -->
+    <section>
+        <h3>3 & 4. Mouse Events</h3>
+        <div id="hoverBox">Mouse mere upar lao</div>
+    </section>
+
+    <!-- 5. Input -->
+    <section>
+        <h3>5. Input</h3>
+        <input id="nameInput" placeholder="Type your name">
+        <p id="liveName"></p>
+    </section>
+
+    <!-- 6. Change -->
+    <section>
+        <h3>6. Change</h3>
+        <select id="course">
+            <option value="">Select Course</option>
+            <option value="HTML">HTML</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+        </select>
+    </section>
+
+    <!-- 7. Keydown -->
+    <section>
+        <h3>7. Keydown</h3>
+        <input id="keyInput" placeholder="Press any keyboard key">
+    </section>
+
+    <!-- 8. Submit -->
+    <section>
+        <h3>8. Submit</h3>
+        <form id="myForm">
+            <input id="email" type="email"
+                   placeholder="Enter your email" required>
+            <button type="submit">Submit Form</button>
+        </form>
+    </section>
+
+    <!-- 9. Focus -->
+    <section>
+        <h3>9. Focus</h3>
+        <input id="focusInput" placeholder="Click to focus">
+    </section>
+
+    <!-- 10. Blur -->
+    <section>
+        <h3>10. Blur</h3>
+        <input id="blurInput" placeholder="Click here, then click outside">
+    </section>
+</div>
+
+<script>
+    let result = document.getElementById("result");
+
+    // 1. Click
+    let clickBtn = document.getElementById("clickBtn");
+
+    clickBtn.addEventListener("click", function () {
+        result.textContent = "Button clicked!";
+    });
+
+
+    // 2. Double Click
+    let doubleBtn = document.getElementById("doubleBtn");
+
+    doubleBtn.addEventListener("dblclick", function () {
+        result.textContent = "Button double-clicked!";
+    });
+
+
+    // 3. Mouseover
+    let hoverBox = document.getElementById("hoverBox");
+
+    hoverBox.addEventListener("mouseover", function () {
+        hoverBox.style.backgroundColor = "lightgreen";
+        result.textContent = "Mouse element ke upar hai!";
+    });
+
+
+    // 4. Mouseout
+    hoverBox.addEventListener("mouseout", function () {
+        hoverBox.style.backgroundColor = "lightblue";
+        result.textContent = "Mouse element se bahar hai!";
+    });
+
+
+    // 5. Input
+    let nameInput = document.getElementById("nameInput");
+    let liveName = document.getElementById("liveName");
+
+    nameInput.addEventListener("input", function () {
+        liveName.textContent = "Hello " + nameInput.value;
+    });
+
+
+    // 6. Change
+    let course = document.getElementById("course");
+
+    course.addEventListener("change", function () {
+        result.textContent = "Selected course: " + course.value;
+    });
+ 
+    
+    // 7. Keydown
+    let keyInput = document.getElementById("keyInput");
+
+    keyInput.addEventListener("keydown", function (event) {
+        result.textContent = "Key pressed: " + event.key;
+    });
+
+
+    // 8. Submit
+    let myForm = document.getElementById("myForm");
+
+    myForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        result.textContent = "Form submitted successfully!";
+    });
+
+
+    // 9. Focus
+    let focusInput = document.getElementById("focusInput");
+
+    focusInput.addEventListener("focus", function () {
+        result.textContent = "Input field focused!";
+    });
+
+
+    // 10. Blur
+    let blurInput = document.getElementById("blurInput");
+
+    blurInput.addEventListener("blur", function () {
+        result.textContent = "Input field se focus hat gaya!";
+    });
+</script>
+
+</body>
+</html>

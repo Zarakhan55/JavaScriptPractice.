@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+
+    <form id="Byform">
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter your name"
+        >
+
+        <br><br>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+        >
+
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        let form = document.getElementById("Byform");
+        let usernameInput = document.getElementById("username");
+        let emailInput = document.getElementById("email");
+        let message = document.getElementById("message");
+
+        // Form submit event
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let username = usernameInput.value.trim();
+            let email = emailInput.value.trim();
+
+            if (username === "") {
+                message.textContent = "Please enter your name.";
+                return;
+            }
+
+            if (email === "") {
+                message.textContent = "Please enter your email.";
+                return;
+            }
+
+            message.textContent =
+                `Hello, ${username}! Your form has been submitted.`;
+        });
+
+        // Focus event
+        usernameInput.addEventListener("focus", function() {
+            usernameInput.style.border = "2px solid green";
+        });
+
+        // Blur event
+        usernameInput.addEventListener("blur", function() {
+            usernameInput.style.border = "1px solid gray";
+        });
+
+        // Email focus event
+        emailInput.addEventListener("focus", function() {
+            emailInput.style.border = "2px solid green";
+        });
+
+        // Email blur event
+        emailInput.addEventListener("blur", function() {
+            emailInput.style.border = "1px solid gray";
+        });
+    </script>
+
+</body>
+</html>
